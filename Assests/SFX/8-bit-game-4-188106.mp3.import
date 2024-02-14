@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/8-bit-game-4-188106.mp3-dfe77de85e1ad91695f0eb5ac3fe3003.mp3str"
+
+[deps]
+
+source_file="res://Assests/SFX/8-bit-game-4-188106.mp3"
+dest_files=[ "res://.import/8-bit-game-4-188106.mp3-dfe77de85e1ad91695f0eb5ac3fe3003.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
