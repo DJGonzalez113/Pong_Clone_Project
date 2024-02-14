@@ -3,7 +3,7 @@
 [ext_resource path="res://Assests/Textures/Ball.png" type="Texture" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16.0086, 16.0018 )
+extents = Vector2( 8, 8 )
 
 [node name="Ball" type="KinematicBody2D"]
 

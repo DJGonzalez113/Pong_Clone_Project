@@ -1,9 +1,53 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assests/Textures/BG.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Ball.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/CPU.tscn" type="PackedScene" id=4]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 640, 24 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 640, 24 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 16, 360 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 16, 360 )
+
+[node name="main" type="Node2D"]
 
 [node name="BG" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 centered = false
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 75, 360 )
+
+[node name="CPU" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1205, 360 )
+
+[node name="Ball" parent="." instance=ExtResource( 3 )]
+position = Vector2( 640, 360 )
+
+[node name="Walls" type="Area2D" parent="."]
+
+[node name="Top" type="CollisionShape2D" parent="Walls"]
+position = Vector2( 640, -24 )
+shape = SubResource( 1 )
+
+[node name="Bottom" type="CollisionShape2D" parent="Walls"]
+position = Vector2( 640, 744 )
+shape = SubResource( 2 )
+
+[node name="Goals" type="Area2D" parent="."]
+
+[node name="Left" type="CollisionShape2D" parent="Goals"]
+position = Vector2( -16, 360 )
+shape = SubResource( 3 )
+
+[node name="Right" type="CollisionShape2D" parent="Goals"]
+position = Vector2( 1296, 360 )
+shape = SubResource( 4 )
