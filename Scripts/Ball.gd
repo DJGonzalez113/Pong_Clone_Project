@@ -4,9 +4,8 @@ extends KinematicBody2D
 const INIT_SPEED = 500
 const ACCL = 10
 var window
-var speed
-var dir
-var rand
+var speed : int
+var dir : Vector2
 
 
 # Called when the node enters the scene tree for the first time.
@@ -15,9 +14,9 @@ func _ready():
 	
 # Called when timer times out to reset the ball in the center
 func new_ball():
-	rand.randomize()
+	randomize()
 	position.x = window.x/2
-	position.y = rand.randi_range(250, window.y - 250)
+	position.y = window.y/2
 	speed = INIT_SPEED
 	dir = rand_dir()
 
@@ -25,10 +24,10 @@ func _physics_process(delta):
 	move_and_collide(dir * speed * delta)
 
 func rand_dir():
-	var new_dir
-	rand.randomize()
-	new_dir.x = rand.randi_range(1, -1)
-	new_dir.y = rand.randf_range(1, -1)
+	var new_dir := Vector2()
+	randomize()
+	new_dir.x = [-1, 1][randi() % 2]
+	new_dir.y = [-0.4, 0.4][randi() % 2]
 	return new_dir.normalized()
 	
 
@@ -36,3 +35,7 @@ func rand_dir():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_BallTimer_timeout():
+	new_ball()
