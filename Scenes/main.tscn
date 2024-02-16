@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assests/Textures/BG.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Ball.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/CPU.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scripts/main.gd" type="Script" id=5]
+[ext_resource path="res://Assests/Fonts/slkscr.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 640, 24 )
@@ -17,6 +18,14 @@ extents = Vector2( 16, 360 )
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 16, 360 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 50
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 50
+font_data = ExtResource( 6 )
 
 [node name="main" type="Node2D"]
 script = ExtResource( 5 )
@@ -34,7 +43,9 @@ position = Vector2( 1205, 360 )
 [node name="Ball" parent="." instance=ExtResource( 3 )]
 position = Vector2( 640, 360 )
 
-[node name="Walls" type="Area2D" parent="."]
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 2
 
 [node name="Top" type="CollisionShape2D" parent="Walls"]
 position = Vector2( 640, -24 )
@@ -44,13 +55,19 @@ shape = SubResource( 1 )
 position = Vector2( 640, 744 )
 shape = SubResource( 2 )
 
-[node name="Goals" type="Area2D" parent="."]
+[node name="LeftGoal" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
 
-[node name="Left" type="CollisionShape2D" parent="Goals"]
+[node name="Left" type="CollisionShape2D" parent="LeftGoal"]
 position = Vector2( -16, 360 )
 shape = SubResource( 3 )
 
-[node name="Right" type="CollisionShape2D" parent="Goals"]
+[node name="RightGoal" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="Right" type="CollisionShape2D" parent="RightGoal"]
 position = Vector2( 1296, 360 )
 shape = SubResource( 4 )
 
@@ -58,4 +75,32 @@ shape = SubResource( 4 )
 one_shot = true
 autostart = true
 
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="PlayerScore" type="Label" parent="HUD"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -150.0
+margin_top = 25.0
+custom_fonts/font = SubResource( 5 )
+text = "Test"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CPUScore" type="Label" parent="HUD"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 150.0
+margin_top = 25.0
+custom_fonts/font = SubResource( 6 )
+text = "Test"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="body_entered" from="LeftGoal" to="." method="_on_LeftGoal_body_entered"]
+[connection signal="body_entered" from="RightGoal" to="." method="_on_RightGoal_body_entered"]
 [connection signal="timeout" from="BallTimer" to="Ball" method="_on_BallTimer_timeout"]
