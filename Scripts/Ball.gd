@@ -31,6 +31,7 @@ func _physics_process(delta):
 			dir = new_dir(collider)
 		else:
 			dir = dir.bounce(collision.get_normal())
+		$BounceSFX.play()
 
 func rand_dir():
 	var new_dir := Vector2()

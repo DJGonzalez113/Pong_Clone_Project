@@ -15,8 +15,12 @@ func _process(delta):
 
 func _on_LeftGoal_body_entered(body):
 	cpu_score += 1
-	$BallTimer.start()
+	score_process()
 
 func _on_RightGoal_body_entered(body):
 	p_score += 1
+	score_process()
+
+func score_process():
+	$ScoreSFX.play()
 	$BallTimer.start()

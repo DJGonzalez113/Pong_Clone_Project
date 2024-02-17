@@ -11,5 +11,5 @@ dest_files=[ "res://.import/8-bit-game-2-186976.mp3-3d918462a8da249f454753e574db
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
