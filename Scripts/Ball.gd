@@ -26,7 +26,7 @@ func _physics_process(delta):
 	var collider
 	if collision:
 		collider = collision.get_collider()
-		if collider == get_parent().get_node("Player") or collider == get_parent().get_node("CPU"):
+		if collider == get_parent().get_node("Player") or collider == get_parent().get_node("CPU") or collider == get_parent().get_node("Player2"):
 			speed += ACCL
 			dir = new_dir(collider)
 		else:
@@ -55,4 +55,7 @@ func new_dir(collider):
 
 
 func _on_BallTimer_timeout():
+	new_ball()
+
+func _on_BT2_timeout():
 	new_ball()
