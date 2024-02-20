@@ -9,15 +9,7 @@
 size = 200
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=5]
-size = 35
-font_data = ExtResource( 1 )
-
 [sub_resource type="DynamicFont" id=2]
-size = 35
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=6]
 size = 35
 font_data = ExtResource( 1 )
 
@@ -25,11 +17,19 @@ font_data = ExtResource( 1 )
 size = 35
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=4]
 size = 35
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=5]
+size = 35
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 35
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=7]
 size = 35
 font_data = ExtResource( 1 )
 
@@ -115,7 +115,7 @@ margin_top = 3.0
 margin_right = 21.0
 margin_bottom = 39.0
 rect_min_size = Vector2( 21, 0 )
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 text = ">"
 
 [node name="Play" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer3/HBoxContainer"]
@@ -125,7 +125,7 @@ margin_bottom = 42.0
 rect_min_size = Vector2( 200, 0 )
 focus_neighbour_top = NodePath("../../../CenterContainer2/HBoxContainer/Quit")
 focus_neighbour_bottom = NodePath("../../../CenterContainer4/HBoxContainer/Play2")
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "1-player"
 flat = true
 align = 0
@@ -144,7 +144,7 @@ margin_top = 3.0
 margin_right = 21.0
 margin_bottom = 39.0
 rect_min_size = Vector2( 21, 0 )
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 text = ">"
 
 [node name="Play2" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer4/HBoxContainer"]
@@ -154,7 +154,7 @@ margin_bottom = 42.0
 rect_min_size = Vector2( 200, 0 )
 focus_neighbour_top = NodePath("../../../CenterContainer3/HBoxContainer/Play")
 focus_neighbour_bottom = NodePath("../../../CenterContainer/HBoxContainer/Options")
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "2-Player"
 flat = true
 align = 0
@@ -174,7 +174,7 @@ margin_top = 3.0
 margin_right = 21.0
 margin_bottom = 39.0
 rect_min_size = Vector2( 21, 0 )
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 4 )
 text = ">"
 
 [node name="Options" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/HBoxContainer"]
@@ -184,7 +184,7 @@ margin_bottom = 42.0
 rect_min_size = Vector2( 200, 0 )
 focus_neighbour_top = NodePath("../../../CenterContainer4/HBoxContainer/Play2")
 focus_neighbour_bottom = NodePath("../../../CenterContainer2/HBoxContainer/Quit")
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 5 )
 text = "OPTIONS"
 flat = true
 align = 0
@@ -204,7 +204,7 @@ margin_top = 3.0
 margin_right = 21.0
 margin_bottom = 39.0
 rect_min_size = Vector2( 21, 0 )
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 6 )
 text = ">"
 
 [node name="Quit" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer2/HBoxContainer"]
@@ -214,7 +214,7 @@ margin_bottom = 42.0
 rect_min_size = Vector2( 200, 0 )
 focus_neighbour_top = NodePath("../../../CenterContainer/HBoxContainer/Options")
 focus_neighbour_bottom = NodePath("../../../CenterContainer3/HBoxContainer/Play")
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 7 )
 text = "QUIT"
 flat = true
 align = 0
