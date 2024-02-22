@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Assests/Textures/BG.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
@@ -7,6 +7,15 @@
 [ext_resource path="res://Scripts/main.gd" type="Script" id=5]
 [ext_resource path="res://Assests/Fonts/slkscr.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://Assests/SFX/8-bit-game-4-188106.mp3" type="AudioStream" id=7]
+[ext_resource path="res://Scenes/Pause.tscn" type="PackedScene" id=8]
+
+[sub_resource type="DynamicFont" id=5]
+size = 50
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 50
+font_data = ExtResource( 6 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 640, 24 )
@@ -20,16 +29,37 @@ extents = Vector2( 16, 360 )
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 16, 360 )
 
-[sub_resource type="DynamicFont" id=5]
-size = 50
-font_data = ExtResource( 6 )
-
-[sub_resource type="DynamicFont" id=6]
-size = 50
-font_data = ExtResource( 6 )
-
 [node name="main" type="Node2D"]
 script = ExtResource( 5 )
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="PlayerScore" type="Label" parent="HUD"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -150.0
+margin_top = 25.0
+custom_fonts/font = SubResource( 5 )
+text = "Test"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CPUScore" type="Label" parent="HUD"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 150.0
+margin_top = 25.0
+custom_fonts/font = SubResource( 6 )
+text = "Test"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pause" parent="HUD" instance=ExtResource( 8 )]
+visible = false
 
 [node name="BG" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -76,32 +106,6 @@ shape = SubResource( 4 )
 wait_time = 2.0
 one_shot = true
 autostart = true
-
-[node name="HUD" type="CanvasLayer" parent="."]
-
-[node name="PlayerScore" type="Label" parent="HUD"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -150.0
-margin_top = 25.0
-custom_fonts/font = SubResource( 5 )
-text = "Test"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CPUScore" type="Label" parent="HUD"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 150.0
-margin_top = 25.0
-custom_fonts/font = SubResource( 6 )
-text = "Test"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ScoreSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )

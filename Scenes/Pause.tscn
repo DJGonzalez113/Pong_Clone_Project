@@ -1,16 +1,29 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assests/Fonts/slkscr.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scenes/Pause.gd" type="Script" id=2]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 25
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 25
 font_data = ExtResource( 1 )
 
+[sub_resource type="DynamicFont" id=6]
+size = 25
+font_data = ExtResource( 1 )
+
 [sub_resource type="DynamicFont" id=3]
+size = 25
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=7]
 size = 25
 font_data = ExtResource( 1 )
 
@@ -19,8 +32,10 @@ size = 25
 font_data = ExtResource( 1 )
 
 [node name="Pause" type="Control"]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -70,71 +85,90 @@ margin_right = 344.0
 margin_bottom = 209.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer/VBoxContainer/CenterContainer2"]
-margin_left = 45.0
-margin_right = 299.0
+margin_left = 37.0
+margin_right = 306.0
 margin_bottom = 104.0
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
-margin_right = 254.0
+margin_right = 269.0
 margin_bottom = 32.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer"]
-margin_right = 254.0
+margin_right = 269.0
 margin_bottom = 32.0
 
 [node name="Label" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer"]
-margin_top = 9.0
-margin_bottom = 23.0
+margin_top = 3.0
+margin_right = 15.0
+margin_bottom = 29.0
+rect_min_size = Vector2( 15, 0 )
+custom_fonts/font = SubResource( 5 )
+text = ">"
 
 [node name="Return" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer"]
-margin_left = 4.0
-margin_right = 254.0
+margin_left = 19.0
+margin_right = 269.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 250, 0 )
 custom_fonts/font = SubResource( 2 )
 text = "Return to Game"
+flat = true
 align = 0
 
 [node name="CenterContainer2" type="CenterContainer" parent="MarginContainer/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
 margin_top = 36.0
-margin_right = 254.0
+margin_right = 269.0
 margin_bottom = 68.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2"]
-margin_right = 254.0
+margin_right = 269.0
 margin_bottom = 32.0
 
 [node name="Label" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2/HBoxContainer"]
-margin_top = 9.0
-margin_bottom = 23.0
+margin_top = 3.0
+margin_right = 15.0
+margin_bottom = 29.0
+rect_min_size = Vector2( 15, 0 )
+custom_fonts/font = SubResource( 6 )
+text = ">"
 
 [node name="Options" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2/HBoxContainer"]
-margin_left = 4.0
-margin_right = 254.0
+margin_left = 19.0
+margin_right = 269.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 250, 0 )
 custom_fonts/font = SubResource( 3 )
 text = "Options"
+flat = true
 align = 0
 
 [node name="CenterContainer3" type="CenterContainer" parent="MarginContainer/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
 margin_top = 72.0
-margin_right = 254.0
+margin_right = 269.0
 margin_bottom = 104.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3"]
-margin_right = 254.0
+margin_right = 269.0
 margin_bottom = 32.0
 
 [node name="Label" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/HBoxContainer"]
-margin_top = 9.0
-margin_bottom = 23.0
+margin_top = 3.0
+margin_right = 15.0
+margin_bottom = 29.0
+rect_min_size = Vector2( 15, 0 )
+custom_fonts/font = SubResource( 7 )
+text = ">"
 
 [node name="Quit" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/HBoxContainer"]
-margin_left = 4.0
-margin_right = 254.0
+margin_left = 19.0
+margin_right = 269.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 250, 0 )
 custom_fonts/font = SubResource( 4 )
 text = "Quit to Menu"
+flat = true
 align = 0
+
+[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer/Return" to="." method="_on_Return_pressed"]
+[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2/HBoxContainer/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/HBoxContainer/Quit" to="." method="_on_Quit_pressed"]
