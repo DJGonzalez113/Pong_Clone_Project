@@ -28,4 +28,5 @@ func _on_Options_pressed():
 
 
 func _on_Quit_pressed():
+	set_is_paused(false)
 	get_tree().change_scene("res://Scenes/MainMenu.tscn")
