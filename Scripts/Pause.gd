@@ -2,6 +2,8 @@ extends Control
 
 
 var is_paused: bool
+onready var pause_contain = $MarginContainer
+onready var op_screen = $Options
 
 
 # Called when the node enters the scene tree for the first time.
@@ -10,8 +12,13 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
-		is_paused = !is_paused
-		set_is_paused(is_paused)
+		if op_screen.visible == true:
+			$MarginContainer.visible = true
+			op_screen.visible = false
+		else:
+			is_paused = !is_paused
+			set_is_paused(is_paused)
+		
 
 func set_is_paused(value):
 	is_paused = value
@@ -24,7 +31,8 @@ func _on_Return_pressed():
 
 
 func _on_Options_pressed():
-	pass # Replace with function body.
+	$MarginContainer.visible = false
+	op_screen.visible = true
 
 
 func _on_Quit_pressed():
