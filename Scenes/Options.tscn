@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assests/Fonts/slkscr.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/Options.gd" type="Script" id=2]
@@ -8,6 +8,10 @@ size = 100
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
+size = 25
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
 size = 25
 font_data = ExtResource( 1 )
 
@@ -45,52 +49,56 @@ custom_fonts/font = SubResource( 1 )
 text = "OPTIONS"
 align = 1
 
-[node name="OpList" type="VBoxContainer" parent="Main List"]
+[node name="CenterContainer" type="CenterContainer" parent="Main List"]
 margin_top = 105.0
 margin_right = 1280.0
-margin_bottom = 157.0
-alignment = 1
+margin_bottom = 161.0
 
-[node name="OpListTags" type="HBoxContainer" parent="Main List/OpList"]
-margin_right = 1280.0
-margin_bottom = 16.0
-alignment = 1
+[node name="OptionList" type="VBoxContainer" parent="Main List/CenterContainer"]
+margin_left = 437.0
+margin_right = 842.0
+margin_bottom = 56.0
 
-[node name="VolTag" type="Label" parent="Main List/OpList/OpListTags"]
-margin_left = 520.0
-margin_right = 596.0
-margin_bottom = 14.0
-rect_min_size = Vector2( 76, 0 )
-text = "Volume: "
+[node name="VolOptions" type="HBoxContainer" parent="Main List/CenterContainer/OptionList"]
+margin_right = 405.0
+margin_bottom = 26.0
+custom_constants/separation = 20
+
+[node name="VolTag" type="Label" parent="Main List/CenterContainer/OptionList/VolOptions"]
+margin_right = 165.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 165, 0 )
+custom_fonts/font = SubResource( 2 )
+text = "Volume"
 align = 2
 
-[node name="VolSlid" type="HSlider" parent="Main List/OpList/OpListTags"]
-margin_left = 600.0
-margin_right = 760.0
+[node name="VolSlider" type="HSlider" parent="Main List/CenterContainer/OptionList/VolOptions"]
+margin_left = 185.0
+margin_right = 405.0
 margin_bottom = 16.0
-rect_min_size = Vector2( 160, 0 )
+rect_min_size = Vector2( 220, 0 )
 min_value = -80.0
-max_value = 15.0
+max_value = 20.0
+ticks_on_borders = true
 
-[node name="OpListButtons" type="HBoxContainer" parent="Main List/OpList"]
-margin_top = 20.0
-margin_right = 1280.0
-margin_bottom = 52.0
-alignment = 1
+[node name="ResOptions" type="HBoxContainer" parent="Main List/CenterContainer/OptionList"]
+margin_top = 30.0
+margin_right = 405.0
+margin_bottom = 56.0
+custom_constants/separation = 20
 
-[node name="ResTag" type="Label" parent="Main List/OpList/OpListButtons"]
-margin_left = 520.0
-margin_top = 9.0
-margin_right = 596.0
-margin_bottom = 23.0
-rect_min_size = Vector2( 76, 0 )
-text = "Resolution: "
+[node name="ResTag" type="Label" parent="Main List/CenterContainer/OptionList/ResOptions"]
+margin_right = 165.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 165, 0 )
+custom_fonts/font = SubResource( 3 )
+text = "Resolution"
+align = 2
 
-[node name="Res" type="OptionButton" parent="Main List/OpList/OpListButtons"]
-margin_left = 610.0
-margin_right = 750.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 140, 0 )
-custom_fonts/font = SubResource( 2 )
+[node name="ResOptions" type="OptionButton" parent="Main List/CenterContainer/OptionList/ResOptions"]
+margin_left = 185.0
+margin_right = 405.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 220, 0 )
 
-[connection signal="value_changed" from="Main List/OpList/OpListTags/VolSlid" to="." method="_on_VolSlid_value_changed"]
+[connection signal="value_changed" from="Main List/CenterContainer/OptionList/VolOptions/VolSlider" to="." method="_on_VolSlider_value_changed"]

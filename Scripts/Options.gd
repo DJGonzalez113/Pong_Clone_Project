@@ -8,8 +8,6 @@ var bus_index: int
 func _ready():
 	pass # Replace with function body.
 
-
-
-func _on_VolSlid_value_changed(value):
+func _on_VolSlider_value_changed(value):
 	bus_index = AudioServer.get_bus_index("Master")
 	AudioServer.set_bus_volume_db(bus_index, value)
